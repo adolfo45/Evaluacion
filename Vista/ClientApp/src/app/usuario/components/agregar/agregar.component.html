@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-header text-center">
+        Usuario
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="guardar($event)">
+          <div class="form-group">
+            <label for="Usuario">Usuario</label>
+            <input formControlName="Usuario" class="form-control" id="Usuario">
+            <small *ngIf="UsuarioField.hasError('required')" class="form-text text-muted">*Requerido</small>
+          </div>
+          <div class="form-group">
+            <label for="Contrasena">Contraseña</label>
+            <input formControlName="Contrasena" type="password" class="form-control" id="Contrasena">
+            <small *ngIf="ContrasenaField.hasError('required')" class="form-text text-muted">*Requerido</small>
+          </div>
+          <div class="form-group">
+            <label for="Correo">Correo</label>
+            <input formControlName="CorreoElectronico" class="form-control" id="Correo">
+            <small *ngIf="CorreoField.hasError('required')" class="form-text text-muted">*Requerido</small>
+            <small *ngIf="CorreoField.hasError('email') && CorreoField.dirty" class="form-text text-muted">El correo no tiene el formato correcto</small>
+          </div>
+          <div class="form-group">
+            <label for="Sexo">Sexo</label>
+            <select formControlName="Sexo" class="form-control" id="Sexo">
+              <option value="" disabled>Seleccione una opción</option>
+              <option value="1">Masculino</option>
+              <option value="2">Femenino</option>
+            </select>
+            <small *ngIf="SexoField.hasError('required')" class="form-text text-muted">*Requerido</small>
+          </div>
+          <div class="form-group form-check">
+            <input formControlName="Estatus" type="checkbox" class="form-check-input" id="Activo">
+            <label class="form-check-label" for="Activo">Estatus</label>
+          </div>
+          <div class="text-center">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-outline-primary">Guardar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<button  type="button" class="btn btn-outline-primary" (click)="save($event)">Prueba</button>
